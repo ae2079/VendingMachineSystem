@@ -1,0 +1,4 @@
+module.exports = {
+  IDLE: 'IDLE',
+  SELECTING_PRODUCT: 'SELECTING_PRODUCT'
+}

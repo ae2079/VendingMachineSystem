@@ -9,6 +9,10 @@ class Product {
   getPrice() {
     return this.price;
   }
+
+  getName() {
+    return this.name;
+  }
 };
 
 module.exports = Product;

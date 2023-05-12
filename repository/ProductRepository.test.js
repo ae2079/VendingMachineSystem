@@ -17,7 +17,7 @@ describe('product repositpry tests', () => {
     
     const savedProduct = ProductRepository.getByName(name);
     
-    expect(savedProduct.name).toBe(name);
+    expect(savedProduct.getName()).toBe(name);
     expect(savedProduct.getPrice()).toBe(price);
   });
 
@@ -35,7 +35,7 @@ describe('product repositpry tests', () => {
 
     const savedProduct = ProductRepository.getByName(name);
 
-    expect(savedProduct.name).toBe(name);
+    expect(savedProduct.getName()).toBe(name);
     expect(savedProduct.getPrice()).toBe(newPrice);
   });
 

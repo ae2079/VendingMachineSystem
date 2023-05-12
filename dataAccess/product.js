@@ -7,12 +7,6 @@ const productDataAccess = {
     privates.products = [];
   },
 
-  dbs() {
-    return {
-      products: privates.products,
-    };
-  },
-
   insertProduct(productData) {
     let product = privates.products.find(p => p.name === productData.name);
     if (product) {
