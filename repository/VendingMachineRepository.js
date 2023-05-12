@@ -22,6 +22,10 @@ class VendingMachineRepository {
     return Object.fromEntries(Object.entries(shelves).map(([k, v]) =>  
       [k, new ProductShelf(ProductRepository.getByName(v.productName), v.count)]));
   }
+  
+  static getAllIds() {
+    return vendingMachineDataAccess.fetchAllIds();
+  }
 };
 
 module.exports = VendingMachineRepository;

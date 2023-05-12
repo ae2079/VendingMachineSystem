@@ -90,4 +90,20 @@ describe('vending machine repositpry tests', () => {
 
     expect(() => VendingMachineRepository.getById(12)).toThrow(Error);
   });
+
+  it('should get all vending machine ids successfully', () => {
+    const id1 = 123;
+    const vendingMachine1 = new VendingMachine(id1);
+    VendingMachineRepository.save(vendingMachine1);
+
+    const id2 = 456;
+    const vendingMachine2 = new VendingMachine(id2);
+    VendingMachineRepository.save(vendingMachine2);
+
+    const allIds = VendingMachineRepository.getAllIds();
+
+    expect(allIds).toHaveLength(2);
+    expect(allIds).toContain(id1);
+    expect(allIds).toContain(id2);
+  });
 });
