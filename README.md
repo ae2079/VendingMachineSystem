@@ -13,8 +13,12 @@ After that, you can see test coverage and test results.
 ### locally:
 Before running this program, you should have node on your PC.
 
-Then, you can run this program by enter "node index.js" command in the terminal at the main directory of project.
+Then, you can run this program by enter "yarn start" command in the terminal at the main directory of project.
 
+### By Docker:
+You can make docker image of the project by enter "docker build . -t vending-machine-system:01" command in the terminal at the main directory of project.
+
+After the image built, you can run it by this command: "docker run -i vending-machine-system:01"
 
 ## How Does This Program Work?
 It will get below commands from command line from the user and do proper actions based on commands.
