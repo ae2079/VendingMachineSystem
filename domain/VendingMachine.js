@@ -14,7 +14,11 @@ class VendingMachine {
   }
 
   chargeShelf(number, count) {
-    this.shelves[number].charge(count);
+    if (this.shelves[number]) {
+      this.shelves[number].charge(count);
+      return;
+    }
+    throw new Error('THE ENTERED NUMBER IS NOT CORRECT!', {number});
   }
 
   getExistingProducts() {
@@ -37,7 +41,7 @@ class VendingMachine {
         this.state = States.IDLE;
         return {remainedCoin, productName: this.shelves[number].product.getName(), count};
       }
-      throw new Error('THE ENTERED NUMBER IS NOT CORRECT!', {number})
+      throw new Error('THE ENTERED NUMBER IS NOT CORRECT!', {number});
     }
     throw new Error('YOU SHOULD INSERT SOME COIN FIRST!');
   }

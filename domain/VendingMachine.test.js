@@ -20,6 +20,19 @@ describe('vending machine tests', () => {
     expect(vendingMachine.shelves[shelfNumber].count).toBe(productCount + chargeCount);
   });
 
+  it('should throw error because of shelf number is not correct', () => {
+    const vendingMachine = new VendingMachine(123);
+    const shelfNumber = 11;
+    vendingMachine.addNewShelf(shelfNumber, sampleProduct, 2);
+
+    try {
+      vendingMachine.chargeShelf(shelfNumber + 1, 5);
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+      expect(error.message).toBe('THE ENTERED NUMBER IS NOT CORRECT!');
+    }
+  });
+
   it('should get existing products successfully', () => {
     const vendingMachine = new VendingMachine(123);
     const shelfNumber = 11;
