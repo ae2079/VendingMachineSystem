@@ -18,22 +18,26 @@ class VendingMachine {
   }
 
   getExistingProducts() {
-    Object.fromEntries(Object.entries(this.shelves).filter(([k, v]) => v.count > 0));
+    return Object.fromEntries(Object.entries(this.shelves).filter(([k, v]) => v.count > 0));
   }
 
   insertCoin(count) {
     if (this.state === States.IDLE) {
       this.insertedCoin = count;
       this.state = States.SELECTING_PRODUCT;
+      return;
     }
     throw new Error('CAN NOT INSERT COIN NOW!', {state: this.state});
   }
 
   buyProduct(number, count) {
     if (this.state === States.SELECTING_PRODUCT) {
-      const remainedCoin = this.shelves[number].buy(this.insertedCoin, count);
-      this.state = States.IDLE;
-      return {remainedCoin, productName: this.shelves[number].getName(), count};
+      if (this.shelves[number]) {
+        const remainedCoin = this.shelves[number].buy(this.insertedCoin, count);
+        this.state = States.IDLE;
+        return {remainedCoin, productName: this.shelves[number].product.getName(), count};
+      }
+      throw new Error('THE ENTERED NUMBER IS NOT CORRECT!', {number})
     }
     throw new Error('YOU SHOULD INSERT SOME COIN FIRST!');
   }
