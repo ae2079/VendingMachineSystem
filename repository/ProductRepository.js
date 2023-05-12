@@ -8,7 +8,7 @@ class ProductRepository {
   }
 
   static getByName(name) {
-    const productData = productDataAccess.getByName(name);
+    const productData = productDataAccess.fetchProductByName(name);
     if (productData) {
       return new Product(productData.name, productData.price);
     }
@@ -16,4 +16,4 @@ class ProductRepository {
   }
 };
 
-module.exports = productRepository;
+module.exports = ProductRepository;

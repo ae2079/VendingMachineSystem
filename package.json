@@ -1,6 +1,19 @@
 {
   "name": "VendingMachineSystem",
   "version": "1.0.0",
+  "main": "index.js",
+  "jest": {
+    "testRegex": "\\.test\\.js$",
+    "testPathIgnorePatterns": [
+      "pyramid/contract"
+    ]
+  },
+  "scripts": {
+    "test": "jest --coverage --noStackTrace --silent --verbose --forceExit"
+  },
   "dependencies": {
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
   }
 }
