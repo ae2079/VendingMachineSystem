@@ -10,7 +10,7 @@ class VendingMachineRepository {
   }
 
   static getById(id) {
-    const vendingMachineData = vendingMachineDataAccess.fetchVendingMachineById(name);
+    const vendingMachineData = vendingMachineDataAccess.fetchVendingMachineById(id);
     if (vendingMachineData) {
       const shelves = VendingMachineRepository.fillShelvesData(vendingMachineData.shelves);
       return new VendingMachine(vendingMachineData.id, shelves, vendingMachineData.state);
@@ -18,7 +18,7 @@ class VendingMachineRepository {
     throw new Error('VENDING MACHINE NOT FOUND!', id);
   }
   
-  static fillShelvesData(selves) {
+  static fillShelvesData(shelves) {
     return Object.fromEntries(Object.entries(shelves).map(([k, v]) =>  
       [k, new ProductShelf(ProductRepository.getByName(v.productName), v.count)]));
   }
