@@ -15,6 +15,7 @@ class ProductShelf {
       const price = this.product.getPrice();
       const cost = price * count;
       if (coin >= cost) {
+        this.count = this.count - count;
         return coin - cost;
       }
       throw new Error('THE COST IS MORE THAN YOUR MONEY!', {cost, coin});
