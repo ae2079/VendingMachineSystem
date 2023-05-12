@@ -18,7 +18,25 @@ describe('product repositpry tests', () => {
     const savedProduct = ProductRepository.getByName(name);
     
     expect(savedProduct.name).toBe(name);
-    expect(savedProduct.price).toBe(price);
+    expect(savedProduct.getPrice()).toBe(price);
+  });
+
+  it('should overwrite product data in database', () => {
+    const name = 'soda';
+    const firstPrice = 2;
+    const product = new Product(name, firstPrice);
+
+    ProductRepository.save(product);
+
+    const newPrice = firstPrice + 1;
+    const updatedProduct = new Product(name, newPrice);
+
+    ProductRepository.save(updatedProduct);
+
+    const savedProduct = ProductRepository.getByName(name);
+
+    expect(savedProduct.name).toBe(name);
+    expect(savedProduct.getPrice()).toBe(newPrice);
   });
 
   it('should not found a product with this name', () => {
