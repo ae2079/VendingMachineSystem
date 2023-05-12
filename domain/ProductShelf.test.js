@@ -1,5 +1,5 @@
-const ProductShelf = require('../domain/ProductShelf');
-const Product = require('../domain/Product');
+const ProductShelf = require('./ProductShelf');
+const Product = require('./Product');
 
 const sampleProduct = new Product('soda', 3);
 
