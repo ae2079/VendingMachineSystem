@@ -36,11 +36,13 @@ class Controller {
     this.checkVendingMachineSelection();
     const product = ProductRepositpry.getByName(productName);
     this.selectedVendingMachine.addNewShelf(number, product, count);
+    VendingMachineRepository.save(this.selectedVendingMachine);
   }
 
   chargeVendingMachineShelf(number, count) {
     this.checkVendingMachineSelection();
     this.selectedVendingMachine.chargeShelf(number, count);
+    VendingMachineRepository.save(this.selectedVendingMachine);
   }
 
   getExistingProducts() {
@@ -51,11 +53,14 @@ class Controller {
   insertCoinToVendingMachine(count) {
     this.checkVendingMachineSelection();
     this.selectedVendingMachine.insertCoin(count);
+    VendingMachineRepository.save(this.selectedVendingMachine);
   }
 
   buyProduct(number, count) {
     this.checkVendingMachineSelection();
-    return this.selectedVendingMachine.buyProduct(number, count);
+    const buyResult = this.selectedVendingMachine.buyProduct(number, count);
+    VendingMachineRepository.save(this.selectedVendingMachine);
+    return buyResult;
   }
 }
 
