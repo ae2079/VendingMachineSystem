@@ -48,7 +48,7 @@ class Controller {
     return this.selectedVendingMachine.getExistingProducts();
   }
 
-  InsertCoinToVendingMachine(count) {
+  insertCoinToVendingMachine(count) {
     this.checkVendingMachineSelection();
     this.selectedVendingMachine.insertCoin(count);
   }
