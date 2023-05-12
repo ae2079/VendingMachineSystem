@@ -20,4 +20,14 @@ describe('product repositpry tests', () => {
     expect(savedProduct.name).toBe(name);
     expect(savedProduct.price).toBe(price);
   });
+
+  it('should not found a product with this name', () => {
+    const name = 'soda';
+    const price = 2;
+    const product = new Product(name, price);
+
+    ProductRepository.save(product);
+
+    expect(() => ProductRepository.getByName('invalid')).toThrow(Error);
+  });
 });
