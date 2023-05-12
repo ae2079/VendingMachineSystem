@@ -27,7 +27,7 @@ describe('product shelf tests', () => {
     expect(productShelf.count).toBe(count - buyCount);
   });
 
-  it('should throw error because of not enough products', () => {
+  it('should throw error because of not enough products', (done) => {
     const count = 2;
     const productShelf = new ProductShelf(sampleProduct, count);
 
@@ -39,10 +39,11 @@ describe('product shelf tests', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toBe('DONT HAVE ENOUGH PRODUCT!');
+      done();
     }
   });
 
-  it('should throw error because of not enough coin', () => {
+  it('should throw error because of not enough coin', (done) => {
     const count = 12;
     const productShelf = new ProductShelf(sampleProduct, count);
 
@@ -54,6 +55,7 @@ describe('product shelf tests', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toBe('THE COST IS MORE THAN YOUR MONEY!');
+      done();
     }
   });
 

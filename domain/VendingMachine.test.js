@@ -20,7 +20,7 @@ describe('vending machine tests', () => {
     expect(vendingMachine.shelves[shelfNumber].count).toBe(productCount + chargeCount);
   });
 
-  it('should throw error because of shelf number is not correct', () => {
+  it('should throw error because of shelf number is not correct', (done) => {
     const vendingMachine = new VendingMachine(123);
     const shelfNumber = 11;
     vendingMachine.addNewShelf(shelfNumber, sampleProduct, 2);
@@ -30,6 +30,7 @@ describe('vending machine tests', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toBe('THE ENTERED NUMBER IS NOT CORRECT!');
+      done();
     }
   });
 
@@ -63,7 +64,7 @@ describe('vending machine tests', () => {
     expect(vendingMachine.insertedCoin).toBe(coinCount);
   });
 
-  it('should throw error because of insert coin in select product state', () => {
+  it('should throw error because of insert coin in select product state', (done) => {
     const vendingMachine = new VendingMachine(123);
     
     vendingMachine.insertCoin(5);
@@ -74,6 +75,7 @@ describe('vending machine tests', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toBe('CAN NOT INSERT COIN NOW!');
+      done();
     }
   });
 
@@ -97,7 +99,7 @@ describe('vending machine tests', () => {
     expect(buyResult.productName).toBe(sampleProduct.getName());
   });
 
-  it('should throw error because of buy product in idle state', () => {
+  it('should throw error because of buy product in idle state', (done) => {
     const vendingMachine = new VendingMachine(123);
     const shelfNumber = 11;
     vendingMachine.addNewShelf(shelfNumber, sampleProduct, 12);
@@ -109,10 +111,11 @@ describe('vending machine tests', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toBe('YOU SHOULD INSERT SOME COIN FIRST!');
+      done();
     }
   });
 
-  it('should throw error because of the shelf number is not exist', () => {
+  it('should throw error because of the shelf number is not exist', (done) => {
     const vendingMachine = new VendingMachine(123);
     const shelfNumber = 11;
     vendingMachine.addNewShelf(shelfNumber, sampleProduct, 12);
@@ -127,6 +130,7 @@ describe('vending machine tests', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toBe('THE ENTERED NUMBER IS NOT CORRECT!');
+      done();
     }
   });
 });
