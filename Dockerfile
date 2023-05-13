@@ -4,10 +4,8 @@ LABEL authors="aliEbrahimi"
 
 WORKDIR app
 
-COPY package.json ./
+COPY . .
 
 RUN yarn install --frozen-lockfile  --prod
-
-COPY . .
 
 CMD [ "node", "index.js" ]
